@@ -17,16 +17,21 @@ for (const links of link) {
   })
 }
 
-const header = document.querySelector('#header');
-const navHeight = header.offsetHeight;
+function ChangeHeaderWhenScroll() {
+  const header = document.querySelector('#header');
+  const navHeight = header.offsetHeight;
 
-window.addEventListener('scroll', function () {
   if (navHeight <= window.scrollY) {
     header.classList.add('scroll');
   } else {
     header.classList.remove('scroll');
   }
-})
+
+
+}
+
+
+
 
 // Swiper - Cria um Carrosel na guia depoimentos
 const swiper = new Swiper('.swiper-container', {
@@ -59,12 +64,21 @@ scrollReveal.reveal(
 )
 
 //Back to top
-const backToTopButton = document.querySelector('.back-to-top');
-window.addEventListener('scroll', function () {
-  if (window.screenY >= 560) {
+
+function BackToTop() {
+  const backToTopButton = document.querySelector('.back-to-top');
+
+  if (window.scrollY >= 560) {
     backToTopButton.classList.add('show');
   } else {
     backToTopButton.classList.remove('show');
   }
+
+}
+
+/* When Scroll */
+window.addEventListener('scroll', function () {
+  ChangeHeaderWhenScroll();
+  BackToTop();
 
 })

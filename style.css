@@ -30,6 +30,12 @@ a {
   --text-color: hsl(0 0% 46%);
   --text-color-light: hsl(0 0% 98%);
   --body-color: hsl(0 0% 98%);
+
+  /** Fonts **/
+  --title-font-size: 1.87rem;
+
+  --body-fonts: 'DM Sans', sans-serif;
+  --title-fonts: 'Poppins', sans-serif;
 }
 
 /*** BASE ***/
@@ -38,14 +44,14 @@ html {
 }
 
 body {
-  font: 400 1rem 'DM Sans', sans-serif;
+  font: 400 1rem var(--body-fonts);
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialiased;
 }
 
 .title {
-  font: 700 1.87rem 'Poppins', sans-serif;
+  font: 700 var(--title-font-size) var(--title-fonts);
   color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
@@ -62,7 +68,7 @@ body {
   padding: 2rem;
   align-items: center;
   border-radius: 0.25rem;
-  font: 500 1rem 'DM Sans', sans-serif;
+  font: 500 1rem var(--body-fonts);
   transition: background 0.3s;
 }
 
@@ -100,7 +106,7 @@ body {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section header {
@@ -127,7 +133,7 @@ main {
 
 /*** LOGO ***/
 .logo {
-  font: 700 1.31rem 'Poppins', sans-serif;
+  font: 700 1.31rem var(--title-fonts);
   color: var(--title-color);
 }
 
@@ -453,6 +459,10 @@ footer {
   background: var(--base-color);
 }
 
+footer.section {
+  padding: 5rem 0;
+}
+
 footer .logo span {
   color: var(--body-color);
 }
@@ -471,9 +481,14 @@ footer i {
   font-size: 1.5rem;
   color: var(--text-color-light);
 }
+
+footer .social {
+  grid-auto-flow: column;
+  width: fit-content;
+}
+
 footer .social a {
   display: inline-block;
-  margin-right: 2rem;
   transition: 0.3s;
 }
 
@@ -508,4 +523,53 @@ footer .social a:hover {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
+}
+
+/** Responsivo **/
+
+/** 1200+ **/
+@media (min-width: 1200px) {
+  .section {
+    padding: 10rem 0;
+  }
+
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 1rem var(--body-fonts);
+  }
+
+  nav .icon-menu {
+    display: none;
+  }
+  /** HOME **/
+
+  #home .container {
+    grid-auto-flow: column;
+    width: fit-content;
+    justify-content: space-between;
+  }
+
+  #home .image {
+    order: 1;
+  }
+  #home .text {
+    order: 0;
+  }
+
+  main {
+    margin-top: var(--header-height);
+  }
+}
+
+@media (min-width: 992px) {
 }
